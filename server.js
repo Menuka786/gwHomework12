@@ -1,36 +1,28 @@
-// DEPENDENCIES
-// Npm packages that we will use to give our server useful functionality
-
-
 const mysql = require('mysql');
 const inquirer = require('inquirer');
 
+var connection = mysql.createConnection({
+    multipleStatements: true, 
+    host: "localhost",
+  
+    // Your port; if not 3306
+    port: 3306,
+  
+    // Your username
+    user: "root",
+  
+    // Your password
+    password: "password",
+    database: "employee_db"
+  });
 
-// Configure MySQL server
-const connection = mysql.createConnection({
-multipleStatements: true,
-host: "localhost",
-// your port; if not 3306
-Port: 3306,
+  
+  connection.connect(function(err) {
+    if (err) throw err;
+    start();
+  });
 
- // Your username
- user: 'root',
-
- // Be sure to update with your own MySQL password!
- password: 'password',
- database: 'employee_DB',
-});
-
-connection.connect((err) => {
- if (err) throw err;
- runSearch();
-});
-
-
-
-
-
-function start() {
+  function start() {
     inquirer
       .prompt({
         name: "action",
@@ -326,28 +318,3 @@ function updateRole() {
 })
 
 }
-
-//function askQuestion() {
-   // inquirer.prompt([ 
-   //     {
-
-    //    }
-  //  ]).then(function(answers) {
-      //  console.log(answers)
-
-        // decide what function to call next
-    //}).catch(function(error) {
-     //   console.log(error);
-   // });
-//}
-
-
-// Create Department Function
-
-
-
-// Create Role Function
-
-// Create Employee Function
-
-// View Department
