@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
     user: "root",
   
     // Your password
-    password: "password",
+    password: "password", 
     database: "employee_db"
   });
 
@@ -246,6 +246,7 @@ async function addEmployee() {
 })
 }
 
+
 function updateRole() {
     connection.query('SELECT * FROM employee', function(err, result) {
         if (err) throw (err);
@@ -257,11 +258,14 @@ function updateRole() {
 // is there a way to make the options here the results of a query that selects all departments?`
             message: "Which employee's role is changing?",
             choices: function() {
-             employeeArray = [];
+             const employeeArray = [];
+             
                 result.forEach(result => {
                     employeeArray.push(
+                        
                         result.last_name
                     );
+                    console.log(result);
                 })
                 return employeeArray;
               }
@@ -301,8 +305,8 @@ function updateRole() {
                 connection.query('SELECT * FROM role WHERE title = ?', [role], function(err, res) {
                 if (err) throw (err);
                     let roleId = res[0].id;
-                    let query = "UPDATE employee SET role_id ? WHERE last_name ?";
-                    let values = [roleId, name]
+                    let query = "UPDATE employee SET role_id = ? WHERE last_name = ?";
+                    let values = [roleId, name];
                     console.log(values);
                      connection.query(query, values,
                          function(err, res, fields) {
