@@ -9,7 +9,7 @@ This Application will allow Employer to be able to view and manage departments, 
 
 Github link : https://github.com/Menuka786/gwHomework12
 
-Video link : 
+Video link : https://drive.google.com/file/d/1oTF-Grzy-1g7VZ1nlOJfbhy36TsW41tC/view?usp=sharing
 
 
 Installation
